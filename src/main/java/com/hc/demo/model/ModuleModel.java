@@ -16,9 +16,39 @@ import javax.persistence.Table;
 public class ModuleModel {
 
     @Id
-    private Long id;
+    private Integer id;
 
     private String moduleName;
 
     private int moduleOrder;
+
+    public ModuleModel(Integer id, String moduleName, int moduleOrder) {
+        this.id = id;
+        this.moduleName = moduleName;
+        this.moduleOrder = moduleOrder;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getModuleName() {
+        return moduleName;
+    }
+
+    public void setModuleName(String moduleName) {
+        this.moduleName = moduleName;
+    }
+
+    public int getModuleOrder() {
+        return moduleOrder;
+    }
+
+    public void setModuleOrder(int moduleOrder) {
+        this.moduleOrder = moduleOrder;
+    }
 }

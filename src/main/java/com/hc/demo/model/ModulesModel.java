@@ -17,4 +17,24 @@ public class ModulesModel {
     private Integer id;
 
     private ModuleModel[] moduleModels;
+
+    public ModulesModel(ModuleModel[] moduleModels) {
+        this.moduleModels = moduleModels;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public ModuleModel[] getModuleModels() {
+        return moduleModels;
+    }
+
+    public void setModuleModels(ModuleModel[] moduleModels) {
+        this.moduleModels = moduleModels;
+    }
 }
