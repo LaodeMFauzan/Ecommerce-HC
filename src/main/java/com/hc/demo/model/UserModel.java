@@ -1,21 +1,21 @@
 package com.hc.demo.model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-public class UserModel {
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+
+@Entity
+@Table(name = "user")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class UserModel implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "user_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private ModulesModel moduls;
-
-    public UserModel(ModulesModel moduls) {
-        this.moduls = moduls;
-    }
+    @NotNull
+    private String userName;
 
     public Long getId() {
         return id;
@@ -25,11 +25,11 @@ public class UserModel {
         this.id = id;
     }
 
-    public ModulesModel getModuls() {
-        return moduls;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setModuls(ModulesModel moduls) {
-        this.moduls = moduls;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

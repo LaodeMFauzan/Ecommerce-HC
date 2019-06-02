@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Hashtable;
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -19,16 +20,16 @@ public class UserController {
 
     @GetMapping("/")
     public String get() {
-        return "hello world";
+        return "hello dimwit";
     }
 
     @RequestMapping("/all")
-    public Hashtable<String, UserModel> getAll(){
+    public List< UserModel> getAll(){
         return userService.getAll();
     }
 
     @RequestMapping("{id}")
-    public UserModel getUser(@PathVariable("id") String id){
+    public UserModel getUser(@PathVariable("id") Long id){
         return userService.getUser(id);
     }
 }

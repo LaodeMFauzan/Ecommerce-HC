@@ -1,34 +1,29 @@
 package com.hc.demo.service;
 
-import com.hc.demo.model.ModuleModel;
-import com.hc.demo.model.ModulesModel;
 import com.hc.demo.model.UserModel;
+import com.hc.demo.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Hashtable;
+import java.util.List;
 
 @Service
 public class UserService {
-    Hashtable<String, UserModel> userHashtable = new Hashtable<String, UserModel>();
 
-    public UserService() {
-        ModuleModel[] moduls = new ModuleModel[5];
-        moduls[0] =  new ModuleModel(1,"Promo",1);
-        ModulesModel modulesModel = new ModulesModel(moduls);
+    private final UserRepository userRepository;
 
-        UserModel userModel = new UserModel(modulesModel);
-
-        userHashtable.put("1",userModel);
+    @Autowired
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
-    public UserModel getUser(String idUser){
-        if (userHashtable.contains(idUser)){
-            return userHashtable.get(idUser);
+    public UserModel getUser(Long idUser){
+        if (userRepository.existsById(idUser)){
+            return userRepository.getOne(idUser);
         }
         return null;
     }
 
-    public Hashtable<String, UserModel> getAll(){
-        return userHashtable;
+    public List<UserModel> getAll(){
+        return userRepository.findAll();
     }
 }
